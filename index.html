@@ -184,7 +184,24 @@
       year: 'numeric'
     });
 
-    dateHijriEl.textContent = hijriFormatter.format(now) + ' H';
+    const hijriDate = hijriFormatter.format(now);
+    // Translate bulan Arab ke Indonesia
+    const hijriIndo = hijriDate
+      .replace('محرم', 'Muharram')
+      .replace('صفر', 'Safar')
+      .replace('ربيع الأول', 'Rabiul Awal')
+      .replace('ربيع الآخر', 'Rabiul Akhir')
+      .replace('جمادى الأولى', 'Jumadil Awal')
+      .replace('جمادى الآخرة', 'Jumadil Akhir')
+      .replace('رجب', 'Rajab')
+      .replace('شعبان', 'Syakban')
+      .replace('رمضان', 'Ramadhan')
+      .replace('شوال', 'Syawal')
+      .replace('ذو القعدة', 'Dzulqaidah')
+      .replace('ذو الحجة', 'Dzulhijjah')
+      .replace(' هـ', '');
+
+    dateHijriEl.textContent = hijriIndo + ' H';
   }
 
   updateDate();
