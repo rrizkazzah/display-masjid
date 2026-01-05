@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Display Masjid Al-Barkah</title>
+ <style>
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-track {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+}
+</style>
+</head>
+<body
+  id="background"
+  class="text-white relative h-screen overflow-hidden overflow-x-hidden m-0 p-0 bg-cover bg-center bg-no-repeat transition-all duration-1000" style="background-image: url('ya.jpg');">
+  <div class="relative h-full overflow-y-auto pb-16">
+ <nav class="mt-6 lg:mt-8 mx-4 lg:mx-6 p-4 lg:p-6 rounded-3xl bg-neutral-800 shadow-lg">
+    <div class="flex flex-col lg:flex-row lg:items-center px-6 gap-4">
+      <div class="w-20 lg:w-25 object-contain lg:pb-3 bg-neutral-800 rounded-full flex items-center justify-center mx-auto lg:mx-0">
+        <img src="image-removebg-preview (12).png" alt="masjid">
+      </div>
+      <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <h1 class="text-2xl lg:text-3xl font-semibold text-white">
+          Masjid Al - Barkah
+        </h1>
+        <p class="text-lg text-gray-400">
+          Jalan Pahlawan, Kampung Tengah, Belakang Polsek Cileungsi
+        </p>
+      </div>
+
+       <div class="flex flex-col items-center lg:items-end lg:ml-auto text-center lg:text-right">
+       <div class="bg-black rounded-lg px-4 py-2">
+        <p class="text-3xl font-mono text-orange-400">
+          19 : 30 : 05
+        </p>
+      </div>
+      <p class="text-xl text-gray-400 mt-1">
+        Rabu, 21 Desember 2022
+      </p>
+      <p class="text-md text-gray-500">
+        28 Jumadil Awal 1444 H
+      </p>
+    </div>
+      
+    </div>
+  </nav>
+
+
+<!-- sholat bentar lagi -->
+<div id="next-sholat-box" class="mt-50 mx-4 flex items-center justify-center gap-3 bg-neutral-900 rounded-2xl px-6 py-4 text-center shadow-lg lg:mt-0 lg:absolute lg:bottom-52 lg:right-6 lg:flex-row lg:rounded-full">
+  <div id="next-sholat-name" class="uppercase bg-orange-500 text-black text-lg lg:text-xl font-semibold px-4 py-1 rounded-full"> Isya
+  </div>
+
+  <div id="next-sholat-countdown" class="font-mono text-orange-400 text-xl lg:text-2xl">
+    01:00:00
+  </div>
+</div>
+
+
+<!-- menuju ramadhan -->
+<div id="ramadhan-box" class="mt-4 mx-4 flex justify-center text-center bg-neutral-900 px-6 py-3 rounded-xl text-sm lg:text-xl text-gray-200 shadow-md lg:mt-0 lg:absolute lg:bottom-52 lg:left-6">
+    100 Hari Menuju Bulan Suci Ramadhan
+  </span>
+</div>
+
+
+<!-- waktu sholat -->
+<div class="mt-6 mx-4 bg-neutral-900/80 backdrop-blur-sm rounded-2xl p-6 lg:mt-0 lg:absolute lg:bottom-22 lg:left-0 lg:right-0 lg:mx-6">
+  <div class="grid grid-cols-3 lg:grid-cols-6 gap-4">
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Subuh</p>
+      <p class="sholat subuh text-2xl font-bold text-orange-500">04:17</p>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Syuruq</p>
+      <p class="sholat syuruq text-2xl font-bold text-orange-500">05:42</p>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Dzuhur</p>
+      <p class="sholat dzuhur text-2xl font-bold text-orange-500">11:57</p>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Ashar</p>
+      <p class="sholat ashar text-2xl font-bold text-orange-500">15:23</p>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Maghrib</p>
+      <p class="sholat maghrib text-2xl font-bold text-orange-500">18:11</p>
+    </div>
+    <div class="text-center">
+      <p class="text-sm text-gray-400 mb-2">Isya</p>
+      <p class="sholat isya text-2xl font-bold text-orange-500">19:27</p>
+    </div>
+  </div>
+</div>
+
+<div class="fixed bottom-0 inset-x-0 bg-neutral-900/90 py-2 overflow-hidden z-[9999]">
+  <div class="marquee-track whitespace-nowrap text-md text-gray-300">
+    Jadwal kajian Senin : Ustadz Khalid Basalamah “Persiapan Menuju Bulan Suci Ramadhan”
+  </div>
+</div>
+
+
+
+<script>
+
+  // background 
+  const backgrounds = [
+    'ya.jpg',
+    'madinah.jpg',
+    'tower.jpg'
+  ];
+
+  let index = 0;
+  const body = document.getElementById('background');
+
+  setInterval(() => {
+    index = (index + 1) % backgrounds.length;
+    body.style.backgroundImage = `url('${backgrounds[index]}')`;
+  }, 5000); // ganti tiap 5 detik
+
+  // clock
+  const clockElement = document.querySelector(
+    '.text-3xl.font-mono.text-orange-400'
+  );
+
+  function updateClock() {
+    const now = new Date();
+
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+
+    clockElement.textContent = `${h} : ${m} : ${s}`;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // masehi and hijria date
+  const dateMasehiEl = document.querySelector('.text-xl.text-gray-400.mt-1');
+  const dateHijriEl  = document.querySelector('.text-md.text-gray-500');
+
+  function updateDate() {
+    const now = new Date();
+
+    // ===== MASEHI =====
+    const hari = [
+      'Minggu', 'Senin', 'Selasa', 'Rabu',
+      'Kamis', 'Jumat', 'Sabtu'
+    ];
+
+    const bulan = [
+      'Januari', 'Februari', 'Maret', 'April',
+      'Mei', 'Juni', 'Juli', 'Agustus',
+      'September', 'Oktober', 'November', 'Desember'
+    ];
+
+    const hariNama = hari[now.getDay()];
+    const tanggal  = now.getDate();
+    const bulanNama = bulan[now.getMonth()];
+    const tahun = now.getFullYear();
+
+    dateMasehiEl.textContent =
+      `${hariNama}, ${tanggal} ${bulanNama} ${tahun}`;
+
+    // ===== HIJRIYAH =====
+    const hijriFormatter = new Intl.DateTimeFormat('id-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+
+    dateHijriEl.textContent = hijriFormatter.format(now) + ' H';
+  }
+
+  updateDate();
+  setInterval(updateDate, 1000);
+
+  // jadwal sholat 
+function loadJadwalSholat() {
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+
+  const url = `https://api.aladhan.com/v1/timingsByCity/${day}-${month}-${year}?city=Jonggol&country=Indonesia&method=11`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const t = data.data.timings;
+
+      // isi jadwal sholat
+      document.querySelector('.sholat.subuh').textContent   = t.Fajr;
+      document.querySelector('.sholat.syuruq').textContent  = t.Sunrise;
+      document.querySelector('.sholat.dzuhur').textContent  = t.Dhuhr;
+      document.querySelector('.sholat.ashar').textContent   = t.Asr;
+      document.querySelector('.sholat.maghrib').textContent = t.Maghrib;
+      document.querySelector('.sholat.isya').textContent    = t.Isha;
+
+      // ⬅️ SHOLAT TERDEKAT TARO DI SINI
+      nextSholatData = getNextSholat(t);
+      document.getElementById('next-sholat-name').textContent =
+        nextSholatData.name;
+
+      startCountdown();
+    })
+    .catch(err => console.error("Gagal ambil jadwal sholat:", err));
+}
+
+loadJadwalSholat();
+
+let nextSholatData = null;
+
+
+function getNextSholat(timings) {
+  const now = new Date();
+
+  const sholatTimes = [
+    { name: 'Subuh', time: timings.Fajr },
+    { name: 'Syuruq', time: timings.Sunrise },
+    { name: 'Dzuhur', time: timings.Dhuhr },
+    { name: 'Ashar', time: timings.Asr },
+    { name: 'Maghrib', time: timings.Maghrib },
+    { name: 'Isya', time: timings.Isha },
+  ];
+
+  for (let s of sholatTimes) {
+    const [h, m] = s.time.split(':');
+    const t = new Date();
+    t.setHours(h, m, 0);
+
+    if (t > now) {
+      return { ...s, date: t };
+    }
+  }
+
+  // Kalau semua sudah lewat → Subuh BESOK
+  const [h, m] = sholatTimes[0].time.split(':');
+  const t = new Date();
+  t.setDate(t.getDate() + 1);
+  t.setHours(h, m, 0);
+
+  return { ...sholatTimes[0], date: t };
+}
+
+function startCountdown() {
+  setInterval(() => {
+    if (!nextSholatData) return;
+
+    const now = new Date();
+    let diff = Math.floor((nextSholatData.date - now) / 1000);
+
+    if (diff < 0) return;
+
+    const h = String(Math.floor(diff / 3600)).padStart(2, '0');
+    const m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+    const s = String(diff % 60).padStart(2, '0');
+
+    document.getElementById('next-sholat-countdown').textContent =
+      `${h}:${m}:${s}`;
+  }, 1000);
+}
+
+// ===== MENUJU RAMADHAN =====
+function updateRamadhanCountdown() {
+  const now = new Date();
+
+  // 1 Ramadhan 1447 H (perkiraan Indonesia)
+  const ramadhanDate = new Date(2026, 1, 18); // 18 Februari 2026
+
+  const diffTime = ramadhanDate - now;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  const el = document.getElementById('ramadhan-box');
+
+  if (!el) return;
+
+  if (diffDays > 0) {
+    el.textContent = `${diffDays} Hari Menuju Bulan Suci Ramadhan`;
+  } else if (diffDays === 0) {
+    el.textContent = `Hari Ini 1 Ramadhan 🌙`;
+  } else {
+    el.textContent = `Selamat Menjalani Ibadah Ramadhan 🌙`;
+  }
+}
+
+updateRamadhanCountdown();
+setInterval(updateRamadhanCountdown, 60 * 60 * 1000); // update tiap jam
+
+</script>
+</body>
+</html>
